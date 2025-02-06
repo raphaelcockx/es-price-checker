@@ -1,0 +1,13 @@
+{
+  "operationName": "NewBookingSearch",
+  "variables": {
+  "contractCode": "EIL_ALL",
+  "adult": 1,
+  "hasInbound": true,
+  "currency": "EUR",
+  "filteredClassesOfService": [
+   "STANDARD"
+  ]
+ },
+ "query": "query   NewBookingSearch(   $origin: String!,   $destination: String!,   $outbound: String!,   $inbound: String,   $productFamilies: [String] = [\"PUB\"],   $contractCode: String = \"EIL_ALL\",   $adult: Int,   $filteredClassesOfService: [ClassOfServiceEnum],   $filteredClassesOfAccommodation: [ClassEnum],   $currency: Currency!,   $isAftersales: Boolean = false,   $hasInbound: Boolean = false,  )   {   journeySearch(    outboundDate: $outbound    inboundDate: $inbound    origin: $origin    destination: $destination    adults: $adult    productFamilies: $productFamilies    contractCode: $contractCode    isAftersales: $isAftersales    currency: $currency   )      {   outbound {    ...searchBound   }     inbound @include(if: $hasInbound) {    ...searchBound   }  } }  fragment searchBound on Offer {  journeys(    hideIndirectTrainsWhenDisruptedAndCancelled: false    hideDepartedTrains: true    hideExternalCarrierTrains: true  ) {   ...journey  } }  fragment journey on Journey {  fares(   filteredClassesOfService: $filteredClassesOfService   filteredClassesOfAccommodation: $filteredClassesOfAccommodation  )  {   prices {    total   }   legs {    serviceName    timing { departureTime: departs     arrivalTime: arrives }   }  } } "
+}

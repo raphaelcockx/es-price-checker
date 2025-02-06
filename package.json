@@ -1,0 +1,19 @@
+{
+  "name": "eurostar-price-checker",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": "./get.js",
+  "author": "Raphael Cockx",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bottleneck": "^2.19.5",
+    "dayjs": "^1.11.13",
+    "ky": "^1.7.4",
+    "write": "^2.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@stylistic/eslint-plugin": "^3.0.1",
+    "globals": "^15.14.0"
+  }
+}

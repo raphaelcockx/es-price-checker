@@ -1,0 +1,108 @@
+{
+  "outbound": [
+    {
+      "serviceName": "9113",
+      "departureTime": "07:56",
+      "arrivalTime": "08:57",
+      "price": 84
+    },
+    {
+      "serviceName": "9117",
+      "departureTime": "08:52",
+      "arrivalTime": "09:57",
+      "price": 94
+    },
+    {
+      "serviceName": "9121",
+      "departureTime": "09:56",
+      "arrivalTime": "10:57",
+      "price": 54
+    },
+    {
+      "serviceName": "9125",
+      "departureTime": "10:56",
+      "arrivalTime": "11:57",
+      "price": 64
+    },
+    {
+      "serviceName": "9135",
+      "departureTime": "12:56",
+      "arrivalTime": "13:57",
+      "price": 94
+    },
+    {
+      "serviceName": "9141",
+      "departureTime": "14:52",
+      "arrivalTime": "15:57",
+      "price": 74
+    },
+    {
+      "serviceName": "9153",
+      "departureTime": "17:56",
+      "arrivalTime": "18:57",
+      "price": 64
+    },
+    {
+      "serviceName": "9163",
+      "departureTime": "20:26",
+      "arrivalTime": "21:27",
+      "price": 49
+    }
+  ],
+  "inbound": [
+    {
+      "serviceName": "9110",
+      "departureTime": "07:04",
+      "arrivalTime": "10:05",
+      "price": 74
+    },
+    {
+      "serviceName": "9114",
+      "departureTime": "08:16",
+      "arrivalTime": "11:13",
+      "price": 84
+    },
+    {
+      "serviceName": "9116",
+      "departureTime": "09:01",
+      "arrivalTime": "12:05",
+      "price": 84
+    },
+    {
+      "serviceName": "9120",
+      "departureTime": "10:04",
+      "arrivalTime": "13:05",
+      "price": 84
+    },
+    {
+      "serviceName": "9126",
+      "departureTime": "11:04",
+      "arrivalTime": "14:05",
+      "price": 94
+    },
+    {
+      "serviceName": "9132",
+      "departureTime": "13:01",
+      "arrivalTime": "16:06",
+      "price": 114
+    },
+    {
+      "serviceName": "9142",
+      "departureTime": "15:04",
+      "arrivalTime": "18:05",
+      "price": 104
+    },
+    {
+      "serviceName": "9148",
+      "departureTime": "17:04",
+      "arrivalTime": "20:05",
+      "price": 114
+    },
+    {
+      "serviceName": "9158",
+      "departureTime": "19:34",
+      "arrivalTime": "22:35",
+      "price": 104
+    }
+  ]
+}

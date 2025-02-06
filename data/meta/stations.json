@@ -1,0 +1,22 @@
+[
+  {
+    "uicCode": "7015400",
+    "name": "London St Pancras Int'l",
+    "timezone": "Europe/London"
+  },
+  {
+    "uicCode": "8727100",
+    "name": "Paris Gare du Nord",
+    "timezone": "Europe/Paris"
+  },
+  {
+    "uicCode": "8814001",
+    "name": "Brussels Midi / Zuid",
+    "timezone": "Europe/Brussels"
+  },
+  {
+    "uicCode": "8821006",
+    "name": "Antwerpen Centraal",
+    "timezone": "Europe/Brussels"
+  }
+]
