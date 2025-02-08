@@ -23,12 +23,15 @@ const limiter = new Bottleneck({
 
 const _getJourneys = limiter.wrap(getJourneys)
 
-const firstDate = '2025-02-06'
+const firstDate = '2025-02-08'
 const lastDate = '2025-04-30'
 const datesToCheck = makeDateSequence([firstDate, lastDate])
 
-const arriveBefore = '11:00'
-const departAfter = '16:00'
+const outboundEarliestDeparture = '07:59'
+const outboundLatestArrival = '11:01'
+
+const inboundEarliestDeparture = '15:59'
+const inboundLatestArrival = '20:01'
 
 const outputData = []
 const outputPath = new URL('./BrusselsParis.json', import.meta.url).pathname
@@ -36,8 +39,11 @@ const outputPath = new URL('./BrusselsParis.json', import.meta.url).pathname
 for (const date of datesToCheck) {
   console.log(`Checking ${date}`)
 
-  const latestOutboundArrival = dayjs(`${date} ${arriveBefore}`, 'Europe/Paris')
-  const earliestInboundDeparture = dayjs(`${date} ${departAfter}`, 'Europe/Paris')
+  const _outboundEarliestDeparture = dayjs(`${date} ${outboundEarliestDeparture}`, 'Europe/Paris')
+  const _outboundLatestArrival = dayjs(`${date} ${outboundLatestArrival}`, 'Europe/Paris')
+
+  const _inboundEarliestDeparture = dayjs(`${date} ${inboundEarliestDeparture}`, 'Europe/Paris')
+  const _inboundLatestArrival = dayjs(`${date} ${inboundLatestArrival}`, 'Europe/Paris')
 
   const { outbounds, inbounds } = await _getJourneys({
     origin: BRUSSELS,
@@ -48,10 +54,11 @@ for (const date of datesToCheck) {
 
   const filteredJourneys = [
     outbounds
-      .filter((journey) => dayjs(journey.arrivalTime).isBefore(latestOutboundArrival) && journey.lowestPrice !== null)
+      .filter((journey) => dayjs(journey.departureTime).isAfter(_outboundEarliestDeparture) && dayjs(journey.arrivalTime).isBefore(_outboundLatestArrival) && journey.lowestPrice !== null)
       .sort((a, b) => a.lowestPrice < b.lowestPrice ? -1 : 1),
+
     inbounds
-      .filter((journey) => dayjs(journey.departureTime).isAfter(earliestInboundDeparture) && journey.lowestPrice !== null)
+      .filter((journey) => dayjs(journey.departureTime).isAfter(_inboundEarliestDeparture) && dayjs(journey.arrivalTime).isBefore(_inboundLatestArrival) && journey.lowestPrice !== null)
       .sort((a, b) => a.lowestPrice < b.lowestPrice ? -1 : 1)
   ]
 
@@ -63,4 +70,4 @@ for (const date of datesToCheck) {
   }
 }
 
-await write(outputPath, JSON.stringify(outputData, null, 2))
+await write(outputPath, JSON.stringify(outputData.sort((a, b) => a.price < b.price ? -1 : 1), null, 2))
